@@ -1,0 +1,22 @@
+importar cosas
+crear clase
+init y despues  el super
+asiganar
+    titulo
+    tamaño
+    la interfaz(caja)
+    A qlabel(el texto de dentro)
+    A qlineedit(si solicita dato)
+    A botones
+    accion de botones
+    integrar las A a la caja
+
+    crear la ventana e integrarla a layout o caja
+    centrar los botones o ventana
+
+    hacer los metodos que ocupará
+
+hacer que se incie la aplicacion
+asignar la ventana a la clase
+mostrar la ventana
+app.exec
