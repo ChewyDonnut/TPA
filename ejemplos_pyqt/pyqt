@@ -8,7 +8,7 @@ asiganar
     A qlabel(el texto de dentro)
     A qlineedit(si solicita dato)
     A botones
-    accion de botones
+    accion de botones  self.boton.clicked.connect
     integrar las A a la caja
 
     crear la ventana e integrarla a layout o caja

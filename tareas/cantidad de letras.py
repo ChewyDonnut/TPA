@@ -10,7 +10,7 @@ class Letras(QMainWindow):
         self.texto=QLabel("la palabra tiene: ")
         self.dato=QLineEdit("")
         self.boton=QPushButton("calcular")
-        self.boton.clicked.connect(self.algo)
+        self.boton.clicked.connect(self.algo) #cuando se llama esta cosa se rompe la ventana
 
         caja.addWidget(self.texto)
         caja.addWidget(self.dato)
@@ -20,12 +20,8 @@ class Letras(QMainWindow):
         ventana.setLayout(caja)
         self.setCentralWidget(ventana)
 
-    def algo(self):
-        palabra= len(self.dato)
-        palabra=str(palabra)
-        self.texto
-
-
+    def algo(self,a):                     # no se hacer como funcione esto
+        self.texto.setText(len(a))  #setText no sirve con enteros
 if __name__=="__main__":
     app=QApplication(sys.argv)
     ventana=Letras()
