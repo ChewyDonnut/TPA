@@ -1,6 +1,6 @@
 import sys
 from PyQt6.QtCore import QSize
-from PyQt6.QtWidgets import QWidget,QPushButton,QVBoxLayout,QMainWindow,QLabel,QLineEdit,QApplication
+from PyQt6.QtWidgets import QMainWindow,QWidget,QApplication,QVBoxLayout,QLabel,QLineEdit,QPushButton
 class Letras(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -10,7 +10,7 @@ class Letras(QMainWindow):
         self.texto=QLabel("la palabra tiene: ")
         self.dato=QLineEdit("")
         self.boton=QPushButton("calcular")
-        self.boton.clicked.connect(self.algo) #cuando se llama esta cosa se rompe la ventana
+        self.boton.clicked.connect(lambda:self.Contar(self.dato.text())) #cuando se llama esta cosa se rompe la ventana
 
         caja.addWidget(self.texto)
         caja.addWidget(self.dato)
@@ -20,8 +20,8 @@ class Letras(QMainWindow):
         ventana.setLayout(caja)
         self.setCentralWidget(ventana)
 
-    def algo(self,a):                     # no se hacer como funcione esto
-        self.texto.setText(len(a))  #setText no sirve con enteros
+    def Contar(self,a):                     # no se hacer como funcione esto
+        self.texto.setText(str(len(a)))  #setText no sirve con enteros
 if __name__=="__main__":
     app=QApplication(sys.argv)
     ventana=Letras()

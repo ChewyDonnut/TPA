@@ -5,7 +5,7 @@ class Reves(QMainWindow):
     def __init__(self) :
         super().__init__()
         self.setWindowTitle("girar")
-        self.setFixedSize(400,500)
+        self.setFixedSize(400,5000)
         caja=QVBoxLayout()
       
         self.texto=QLabel("ingrese palabra y se da vuelta")
