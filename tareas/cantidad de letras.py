@@ -21,6 +21,8 @@ class Letras(QMainWindow):
         self.setCentralWidget(ventana)
 
     def Contar(self,a):                     # no se hacer como funcione esto
+        self.texto=self.texto.spit(" ")
+        self.texto=self.texto.text
         self.texto.setText(str(len(a)))  #setText no sirve con enteros
 if __name__=="__main__":
     app=QApplication(sys.argv)

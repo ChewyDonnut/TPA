@@ -5,11 +5,11 @@ class Reves(QMainWindow):
     def __init__(self) :
         super().__init__()
         self.setWindowTitle("girar")
-        self.setFixedSize(400,5000)
+        self.setFixedSize(QSize(400,500))
         caja=QVBoxLayout()
       
         self.texto=QLabel("ingrese palabra y se da vuelta")
-        self.dato=QLineEdit("a")
+        self.dato=QLineEdit("")
         self.boton=QPushButton("voltear")
       
         self.boton.clicked.connect(self.girar)    
@@ -24,10 +24,12 @@ class Reves(QMainWindow):
     
     def girar(self):
         palabra=self.dato.text()
-        invertido=" "
+
+        invertido=""
         for i in palabra:
             invertido=i + invertido
             self.texto.setText(invertido)
+        self.dato.setText(" ")
 
 
 if __name__=="__main__":
