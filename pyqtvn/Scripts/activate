@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\ChewyDonut\Desktop\codigos\pyqt6\pyqtvn"
+VIRTUAL_ENV="C:\Users\ChewyDonut\Desktop\codigos\TPA\pyqtvn"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

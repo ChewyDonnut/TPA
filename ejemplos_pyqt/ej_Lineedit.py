@@ -31,7 +31,7 @@ class VentanaPrincipal(QMainWindow):
     def reaccionar(self):
         self.texto.setText("ingresaste: " + self.entrada.text()) # cambia el  mensaje en pantalla por el de self.entrada
         self.entrada.setText("")
-        self.boton1.setText("ingresado")
+        
 
 if __name__=="__main__":
     app= QApplication(sys.argv)

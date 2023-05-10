@@ -25,7 +25,7 @@ class VentanaPrincipal(QMainWindow):
 
         ventana=QWidget()#se asigna el layout a la ventana, no termine de enteder
         ventana.setLayout(caja)
-q    #primera forma de manejar eventos
+    #primera forma de manejar eventos
 
     def reaccionar(self):
         n=int(self.entrada.text())

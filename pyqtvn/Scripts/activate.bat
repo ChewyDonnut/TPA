@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\ChewyDonut\Desktop\codigos\pyqt6\pyqtvn
+set VIRTUAL_ENV=C:\Users\ChewyDonut\Desktop\codigos\TPA\pyqtvn
 
 if not defined PROMPT set PROMPT=$P$G
 
