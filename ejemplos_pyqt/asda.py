@@ -1,6 +1,21 @@
 import sys
+from random import randint
 from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QWidget
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QDialog, QDialogButtonBox, QVBoxLayout, QLabel
+
+
+class OtraVentana(QWidget):
+    """
+        Es la clase de cualquier ventana que se quiera desplegar
+    """
+    def __init__(self):
+        super().__init__()
+        capa = QVBoxLayout()
+        self.setWindowTitle("Ventana Secundaria")
+        self.texto_1 = QLabel(f"Esta es otra ventana con random: {randint(0,100)}")
+        capa.addWidget(self.texto_1)
+        self.setLayout(capa)
+
 
 # Una clase que define el diseño y comportamiento de una ventana (vista)
 class VentanaPrincipal(QMainWindow):
@@ -8,96 +23,55 @@ class VentanaPrincipal(QMainWindow):
         super().__init__() # permite inicializar los atributos y metodos de la clase QMainWindow
         
         # Sección del init para diseño...
-        self.contador_clicks = 0
+        #self.ventana_secundaria = None # opción de ventana no creada y desplegada en btn
+        self.ventana_secundaria_1 = OtraVentana() # En toda la aplicación va a existir una sola ventana secundaria
+        self.ventana_secundaria_2 = OtraVentana() # En toda la aplicación va a existir una sola ventana secundaria
+        
         self.setWindowTitle("Aplicación en PyQt6")
         self.setFixedSize(QSize(400,200))
-        #caja = QHBoxLayout()
-        caja = QVBoxLayout()
+        capa = QVBoxLayout()
         
-        self.texto = QLabel("Texto de prueba")
-        self.entrada = QLineEdit("Ingresa tu nombre")
-        self.boton = QPushButton("Ingresar")
-        self.boton.clicked.connect(self.reaccionar) #Clicked es una señal
+        ####boton = QPushButton("Presioname", lambda clicked: print("Acción con Lambda Expressions"))
+        boton1 = QPushButton("Lanzar Nueva Ventana 1")
+        # boton1.clicked.connect(self.reaccionar1)
+        boton1.clicked.connect(lambda checked: self.reaccionar(self.ventana_secundaria_1))
+        boton2 = QPushButton("Lanzar Nueva Ventana 2")
+        # boton2.clicked.connect(self.reaccionar2)
+        boton2.clicked.connect(lambda checked: self.reaccionar(self.ventana_secundaria_2))
+        capa.addWidget(boton1)
+        capa.addWidget(boton2)
         
-        # Se agregan los componentes al layout definido
-        caja.addWidget(self.texto)
-        #caja.addWidget(self.entrada)
-        #caja.addWidget(self.boton)
+        w = QWidget()
+        w.setLayout(capa)
+        self.setCentralWidget(w)
         
-        #asigna el layout a la ventana
-        ventana = QWidget()
-        ventana.setLayout(caja)
-        self.setCentralWidget(ventana)
-        
-        
-        
+    #Código unificado de show y hide para cualquier ventana
+    def reaccionar(self, otra_ventana):
+        #Opción 4 -> desplegando ventanas con show y hide
+        if otra_ventana.isVisible():
+            otra_ventana.hide() # hace que la ventana sea invisible: visible = False
+        else:
+            otra_ventana.show() # hace que la ventan sea visible: visible = True
+
     #Primera forma de manejar eventos
-    def reaccionar(self): # Slot
-        self.texto.setText("Bienvenido/a " + self.entrada.text())
-        self.entrada.setText("")
-        self.boton.setText("Ingresado")
+    def reaccionar1(self):
         
-    # Más acciones de eventos desde mouse
-    def mouseMoveEvent(self, e):
-        self.texto.setText("El raton se mueve!!!")
-        
-    def mousePresEvent(self, e):
-        # evento button() especifica al botón que gatilla el evento
-        # evento buttons() estado de todos los botones del mouse
-        # position() la posición del mouse -> QPoint
-        
-        if e.button() == Qt.MouseButton.RightButton:
-            self.texto.setText("Se presionó el botón derecho")
-        elif e.button() == Qt.MouseButton.LeftButton:
-            self.texto.setText("Se presionó el botón izquierdo")
-        elif e.button() == Qt.MouseButton.MiddleButton:
-            self.texto.setText("Se presionó el botón medio")
-            
-    
-    def mouseReleaseEvent(self, e):
-        if e.button() == Qt.MouseButton.LeftButton:
-            self.texto.setText("Se liberó el botón izquierdo")
-        if e.button() == Qt.MouseButton.RightButton:
-            self.texto.setText("Se liberó el botón derecho")
-        if e.button() == Qt.MouseButton.MiddleButton:
-            self.texto.setText("Se liberó el botón medio")
-            
-    
-    def mouseDoubleClickEvent(self, e):
-        if e.button() == Qt.MouseButton.LeftButton:
-            self.texto.setText("Se presionó doble el botón izquierdo")
-        if e.button() == Qt.MouseButton.RightButton:
-            self.texto.setText("Se presionó doble el botón derecho")
-        if e.button() == Qt.MouseButton.MiddleButton:
-            self.texto.setText("Se presionó doble el botón medio")
-    
-    
-    # Más acciones de eventos desde teclado
-    def keyPressEvent(self, e):
-        self.texto.setText(f"La tecla presionada es: {e.key()}")
-        if e.key() == Qt.Key.Key_W:
-            self.texto.setText(f"La tecla presionada es: arriba")
-        if e.key() == Qt.Key.Key_S:
-            self.texto.setText(f"La tecla presionada es: abajo")
-        if e.key() == Qt.Key.Key_A:
-            self.texto.setText(f"La tecla presionada es: izquierda")
-        if e.key() == Qt.Key.Key_D:
-            self.texto.setText(f"La tecla presionada es: derecha")
+        #Opción 4 -> desplegando ventanas con show y hide
+        if self.ventana_secundaria_1.isVisible():
+            self.ventana_secundaria_1.hide() # hace que la ventana sea invisible: visible = False
+        else:
+            self.ventana_secundaria_1.show() # hace que la ventan sea visible: visible = True
 
-    
-    def keyReleaseEvent(self, e):
-        self.texto.setText(f"La tecla liberada es: {e.key()}")
-        if e.key() == Qt.Key.Key_W:
-            self.texto.setText(f"La tecla liberada es: arriba")
-        if e.key() == Qt.Key.Key_S:
-            self.texto.setText(f"La tecla liberada es: abajo")
-        if e.key() == Qt.Key.Key_A:
-            self.texto.setText(f"La tecla liberada es: izquierda")
-        if e.key() == Qt.Key.Key_D:
-            self.texto.setText(f"La tecla liberada es: derecha")
-            
-        
 
+    #Primera forma de manejar eventos
+    def reaccionar2(self):
+        
+        #Opción 4 -> desplegando ventanas con show y hide
+        if self.ventana_secundaria_2.isVisible():
+            self.ventana_secundaria_2.hide() # hace que la ventana sea invisible: visible = False
+        else:
+            self.ventana_secundaria_2.show() # hace que la ventan sea visible: visible = True
+            
 # Main
 if __name__ == "__main__":
     app = QApplication(sys.argv)
