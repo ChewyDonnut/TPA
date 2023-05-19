@@ -1,0 +1,22 @@
+1(git status) (git add.) (git commit -m "nombre de commit") (git pull)  (git push)  
+
+2 clonando el repositorio
+
+
+3 ocurre un error por que no pueden ser instanciadas directamente
+
+
+4 indica que este metodo debe ser implementado en las clases especificas que hereden de la clase abstracta
+
+5 (que se abra una ventana),(que al presionar un boto cambie una palabra),(que al presionar un boton cambie de ventana),(que se abra una ventana emergente)
+
+6 un ciclo de eventos es algo que se repite las veces que el usuario quiera, como un for o un while
+
+
+7 no es posible, se debe cerrar para coninuar
+
+8 boton,Ventana,grid,QVBoxLayout,imagenes,Qlabel,Lineedit,titulo
+
+9 (QSpinBox) (QSlider)
+
+10

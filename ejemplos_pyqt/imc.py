@@ -28,7 +28,7 @@ class Imc(QMainWindow):
         caja.addLayout(grid)
         caja.addWidget(self.boton)
         caja.addWidget(self.resultado)       
-
+        
         ventana=QWidget()
         ventana.setLayout(caja)
         ventana.setLayout(grid)
