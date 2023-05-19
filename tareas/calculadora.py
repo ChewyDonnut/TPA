@@ -1,9 +1,10 @@
 import sys
+from math import pi
 from PyQt6.QtWidgets import QApplication,QMainWindow,QWidget,QVBoxLayout,QGridLayout,QLabel,QLineEdit,QPushButton
 class Calculadora(QMainWindow):
     def __init__(self, ):
         super().__init__()
-        self.setWindowTitle("calculadora")
+        self.setWindowTitle("hola")
         self.datos=QLabel("")
         self.dato=QLabel("")
         caja=QVBoxLayout()
@@ -23,13 +24,15 @@ class Calculadora(QMainWindow):
         self.siete=QPushButton("7")
         self.ocho=QPushButton("8")
         self.nueve=QPushButton("9")
-        self.cero=QPushButton("0")        
+        self.cero=QPushButton("0")
+        self.pii=QPushButton("pi")   ######   
         self.suma=QPushButton("+")
         self.resta=QPushButton("-")
         self.mult=QPushButton("*")
         self.div=QPushButton("/")
         self.resultado=QPushButton("=") 
-        self.c=QPushButton("c")    
+        self.c=QPushButton("c")  
+          
         #agregar grid
         num.addWidget(self.uno,2,0)        
         num.addWidget(self.dos,2,1)                
@@ -47,6 +50,7 @@ class Calculadora(QMainWindow):
         num.addWidget(self.suma,3,3)
         num.addWidget(self.resultado,3,2)
         num.addWidget(self.c,3,0)
+        num.addWidget(self.pii,4,0)
         #datos de toda la ventana
         caja.addWidget(self.dato)
         caja.addWidget(self.datos)
@@ -73,6 +77,7 @@ class Calculadora(QMainWindow):
         self.div.clicked.connect(self.divi)
         self.resultado.clicked.connect(self.result)
         self.c.clicked.connect(self.clear)
+        self.pii.clicked.connect(self.piii)
     def one(self):
         texto=self.datos.text()
         self.datos.setText(texto + "1")
@@ -103,49 +108,60 @@ class Calculadora(QMainWindow):
     def cer(self):
         texto=self.datos.text()
         self.datos.setText(texto + "0")    
+    def piii(self):
+        texto=self.datos.text()
+        self.datos.setText(texto + f"{pi}")
+    
+        pass
     def multi(self):
-        self.dato1=int(self.datos.text())
+        self.dato1=float(self.datos.text())
         self.dato.setText(f"{self.dato1} *")
         self.datos.clear()
         
     def divi(self):
-        self.dato1=int(self.datos.text())
+        self.dato1=float(self.datos.text())
         self.dato.setText(f"{self.dato1} /")
         self.datos.clear()        
     def sum(self):
-        self.dato1=int(self.datos.text())
+        self.dato1=float(self.datos.text())
         self.dato.setText(f"{self.dato1} +")
         self.datos.clear()
         
+    
+    
+    
+               
     def rest(self):
-        self.dato1=int(self.datos.text())
+        self.dato1=float(self.datos.text())
         self.dato.setText(f"{self.dato1} -")
         self.datos.clear()
         
     def result(self):
-        self.dato2 = int(self.datos.text())
+        self.dato2 = float(self.datos.text())
         dato=self.dato.text()
         if dato[-1]=="+":
-            self.dato2=int(self.datos.text())
+            self.dato2=float(self.datos.text())
             self.datos.setText(f"{self.dato1+self.dato2}")
             self.dato.clear()
-        elif dato[-1]=="-":
-            self.dato2=int(self.datos.text())
+        
+        if dato[-1]=="-":
+            self.dato2=float(self.datos.text())
             self.datos.setText(f"{self.dato1-self.dato2}")
            
             self.dato.clear()
         elif dato[-1]=="*":
-            self.dato2=int(self.datos.text())
+            self.dato2=float(self.datos.text())
             self.datos.setText(f"{self.dato1*self.dato2}")
             self.dato.clear()
         elif dato[-1]=="/":
-            self.dato2=int(self.datos.text())
+            self.dato2=float(self.datos.text())
             if self.dato2!=0:
                 self.datos.setText(f"{self.dato1/self.dato2}")               
                 self.dato.clear()
             else:
                 self.datos.setText("indeterminado")  
                 self.dato.clear()  
+          
     def clear(self):
         self.dato1 = None
         self.dato2 = None

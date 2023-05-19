@@ -2,7 +2,7 @@ import sys
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtWidgets import QApplication, QMainWindow ,QPushButton, QStackedLayout,QWidget,QVBoxLayout,QHBoxLayout,QLabel,QGridLayout,QLineEdit
 
-class VentanaPrincipal():
+class VentanaPrincipal(QMainWindow):
     def __init__(self):
         super().__init__() # permite inicializar los atrubbutos y metodos de la clase QMAinWindow
         self.clicks=0
